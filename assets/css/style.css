@@ -1,0 +1,26 @@
+body {
+  background-color: darkslateblue;
+}
+
+h1 {
+  color: white;
+  font-size: 48px;
+  text-align: center;
+}
+
+.map {
+  width: 60%;
+  height: 60%;
+  margin-top: 0;
+}
+
+svg path {
+  fill: transparent;
+  stroke: #ffffff;
+  stroke-width: 1px;
+  transition: fill 0.3s;
+}
+
+svg path:hover {
+  fill: #9b9b9b;
+}
