@@ -21,7 +21,30 @@ svg path {
   transition: fill 0.3s;
 }
 
-svg path:hover {
-  fill: #9b9b9b;
+.path-color-red {
+  fill: red;
   filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+}
+.path-color-blue {
+  fill: blue;
+  filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+}
+.path-color-yellow {
+  fill: yellow;
+  filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+}
+.path-color-black {
+  fill: black;
+  filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+}
+svg path:hover {
+  /* fill: #9b9b9b; */
+  fill: var(--dif-color);
+  filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+}
+
+#tooltip {
+  position: absolute;
+  border: solid 1px #fc0;
+  color: white;
 }
