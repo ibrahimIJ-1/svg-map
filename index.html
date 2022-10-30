@@ -229,7 +229,7 @@
         </button>
       </div>
     </div>
-    <div id="tooltip"></div>
+    <div id="tooltip"><div id="content"></div></div>
     <script
       src="https://code.jquery.com/jquery-3.6.1.min.js"
       integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
@@ -241,30 +241,38 @@
       crossorigin="anonymous"
     ></script>
     <script>
+      let last = "";
       $(document).ready(function () {
         $("path")
           .mouseenter(function (mouse) {
-            removeClasses();
             detail = {
               title: $(this).attr("data-title"),
               size: $(this).attr("data-size"),
             };
-            $(".details", this).toggleClass("d-none");
-            $("#tooltip").append(details(detail));
-            $("#tooltip").css("top", mouse.pageY);
-            $("#tooltip").css("left", mouse.pageX);
-            $("#clicked").append(details(detail));
+            if (last != $(this).attr("data-title")) {
+              removeClasses();
+              $("#tooltip #content div").remove();
+              $("#clicked div").remove();
+              $("#tooltip #content").append(details(detail));
+              $("#tooltip").css("top", mouse.pageY - 100);
+              $("#tooltip").css("left", mouse.pageX);
+              $("#clicked").append(details(detail));
+              last = $(this).attr("data-title");
+            }
           })
           .mouseleave(function (mouse) {
-            $("#clicked div").remove();
-            $("#tooltip div").remove();
-
-            $(".details", this).toggleClass("d-none");
+            if (last != $(this).attr("data-title")) {
+              $("#clicked div").remove();
+              $("#tooltip #content div").remove();
+            } else {
+            }
           });
       });
 
       function showHighlights(categories) {
         removeClasses();
+        $("#tooltip #content div").remove();
+        $("#clicked div").remove();
         if (categories[0] != "NAN") {
           categories.forEach((element) => {
             if (element == "IQ-DA")
