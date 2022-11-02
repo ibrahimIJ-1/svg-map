@@ -1,5 +1,13 @@
 let last = "";
 $(document).ready(function () {
+  $("#landmarks-level1 polygon").each(function (index, element) {
+    $(element).click(function (e) {
+      removeClasses();
+      details(detail);
+      if (detail["title"]) toggleOn();
+      last = $(this).attr("data-title");
+    });
+  });
   $("#landmarks-level1 polygon")
     .mouseenter(function (mouse) {
       detail = {
@@ -11,21 +19,10 @@ $(document).ready(function () {
       removeClasses();
       details(detail);
       if (detail["title"]) toggleOn();
-      //   $("#tooltip #content div").remove();
-      // $("#clicked div").remove();
-      //   $("#tooltip #content").append(details(detail));
-      //   $("#tooltip").css("top", mouse.pageY - 100);
-      //   $("#tooltip").css("left", mouse.pageX);
-
       last = $(this).attr("data-title");
     })
     .mouseleave(function (mouse) {
       toggleOff();
-      if (last != $(this).attr("data-title")) {
-        //   $("#clicked div").remove();
-        //   $("#tooltip #content div").remove();
-      } else {
-      }
     });
 });
 
